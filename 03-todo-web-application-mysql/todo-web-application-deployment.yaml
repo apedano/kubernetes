@@ -17,15 +17,31 @@ spec:
       containers:
       - env:
         - name: RDS_DB_NAME
-          value: todos
+#          value: todos
+          valueFrom:
+            configMapKeyRef:
+              key: RDS_DB_NAME
+              name: todo-web-application-config #name of the ConfigMap
         - name: RDS_HOSTNAME
-          value: mysql
+          valueFrom:
+            configMapKeyRef:
+              key: RDS_HOSTNAME
+              name: todo-web-application-config #name of the ConfigMap
         - name: RDS_PASSWORD
-          value: dummytodos
+          valueFrom:
+            secretKeyRef:
+              key: RDS_PASSWORD
+              name: todo-web-application-secrets #name of the secret
         - name: RDS_PORT
-          value: "3306"
+          valueFrom:
+            configMapKeyRef:
+              key: RDS_PORT
+              name: todo-web-application-config #name of the ConfigMap
         - name: RDS_USERNAME
-          value: todos-user
+          valueFrom:
+            configMapKeyRef:
+              key: RDS_USERNAME
+              name: todo-web-application-config #name of the ConfigMap
         image: 448877123666/todo-web-application-mysql:0.0.1-SNAPSHOT
         imagePullPolicy: ""
         name: todo-web-application
