@@ -28,8 +28,8 @@ spec:
         env:
           - name: CURRENCY_EXCHANGE_URI
             value: http://currency-exchange
-#          - name: SPRING_PROFILES_ACTIVE
-#            value: kubernetes
+          - name: SPRING_PROFILES_ACTIVE
+            value: kubernetes
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 ---
